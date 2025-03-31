@@ -16,11 +16,11 @@ export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <h1 className="text-4xl font-bold text-red-500">Erreur 404</h1>
-      <p className="text-lg text-gray-600 mb-4">La page que vous cherchez n'existe pas.</p>
+      <p className="text-lg text-gray-600 mb-4">La page que vous cherchez n&apos;existe pas.</p>
       {animationData ? (
         <Lottie animationData={animationData} className="w-64 h-64" loop />
       ) : (
-        <p>Chargement de l'animation...</p>
+        <p>Chargement de l&apos;animation...</p>
       )}
     </div>
   );
