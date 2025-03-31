@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -45,9 +45,9 @@ function Spinner() {
 export default function UsersPage() {
   return (
     <div className="p-4">
-      <React.Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner />}>
         <UsersList />
-      </React.Suspense>
+      </Suspense>
     </div>
   );
 }
