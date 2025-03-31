@@ -10,13 +10,19 @@ async function fetchData() {
   return response.json();
 }
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
 const UsersList = async () => {
-  const users = await fetchData();
+  const users: User[] = await fetchData();
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Liste des Utilisateurs</h1>
       <ul className="space-y-4">
-        {users.map((user: any) => (
+        {users.map((user) => (
           <li key={user.id} className="bg-gray-100 p-4 rounded shadow-md">
             <h2 className="font-semibold text-black">{user.name}</h2>
             <p className="font-semibold text-black">{user.email}</p>
