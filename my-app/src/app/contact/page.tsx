@@ -25,10 +25,10 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
+  
     try {
       const validation = contactSchema.safeParse(formData);
-
+  
       if (!validation.success) {
         validation.error.errors.forEach((error) => {
           toast.error(error.message);
@@ -36,7 +36,7 @@ const ContactPage = () => {
         setLoading(false);
         return;
       }
-
+  
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -44,9 +44,9 @@ const ContactPage = () => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       const result = await response.json();
-
+  
       if (response.ok && result.success) {
         toast.success("Formulaire envoyé avec succès !");
       } else {
@@ -57,12 +57,17 @@ const ContactPage = () => {
         }
       }
     } catch (err) {
-      toast.error("Une erreur est survenue lors de l'envoi.");
+      if (err instanceof Error) {
+        toast.error(`Erreur: ${err.message}`);
+      } else {
+        toast.error("Une erreur est survenue lors de l'envoi.");
+      }
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", message: "" });
     }
   };
+  
 
   return (
     <div className="p-4">
