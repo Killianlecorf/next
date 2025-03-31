@@ -27,7 +27,15 @@ const ContactPage = () => {
     setLoading(true);
 
     try {
-      contactSchema.parse(formData);
+      const validation = contactSchema.safeParse(formData);
+
+      if (!validation.success) {
+        validation.error.errors.forEach((error) => {
+          toast.error(error.message);
+        });
+        setLoading(false);
+        return;
+      }
 
       const response = await fetch("/api/contact", {
         method: "POST",
