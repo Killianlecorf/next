@@ -20,9 +20,12 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-      
+          cache-dependency-path: my-app/package-lock.json
+
       - name: Install dependencies
         run: npm install
-      
+        working-directory: my-app
+
       - name: Run ESLint
         run: npm run lint
+        working-directory: my-app
