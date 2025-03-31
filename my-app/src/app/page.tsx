@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex flex-col items-center p-4">
       <h1 className="text-2xl mb-4">Bienvenue sur la page d'accueil</h1>
       <Image
-        src="/image.jpg"
+        src="/react.jpg"
         alt="Une belle image"
         width={800}
         height={600}
