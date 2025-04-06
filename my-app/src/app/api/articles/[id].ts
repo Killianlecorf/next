@@ -12,6 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json(data[0]);
   } catch (error) {
+    console.error("Failed to fetch article:", error);
     res.status(500).json({ error: "Erreur serveur" });
-  }
+  }  
 }
